@@ -6,6 +6,8 @@ export async function load({ params }) {
     const files = readdirSync("static/assets");
     const entries = files
         .filter((file) => file.endsWith(".glb") || file.endsWith(".gltf"))
+        // don't show progressive assets / LOD files in this list
+        .filter(file => !(file.startsWith("image_") || file.startsWith("mesh_")))
         .map((file) => {
             let name = file.replaceAll("\\", "/").split("/").pop()!.split(".").shift();
             name = toDisplayName(name!);
