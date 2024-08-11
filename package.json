@@ -11,11 +11,11 @@
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "dependencies": {
-	  "@needle-tools/engine": "^3.36.2-beta",
-	  "three": "npm:@needle-tools/three@^0.162.2"
+	  "@needle-tools/engine": "npm:@needle-tools/engine@^3.48.0-experimental",
+	  "three": "npm:@needle-tools/three@^0.162.7"
 	},
   "devDependencies": {
-	  "@needle-tools/helper": "^1.8.0",
+	  "@needle-tools/helper": "^1.9.0",
 	  "@sveltejs/adapter-auto": "^2.0.0",
 	  "@sveltejs/adapter-static": "^2.0.2",
 	  "@sveltejs/kit": "^1.5.0",

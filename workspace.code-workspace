@@ -2,10 +2,15 @@
   "folders": [
     {
       "path": "."
+    },
+    {
+      "name": "🌵 Needle Engine",
+      "path": "node_modules/@needle-tools/engine",
+      "@needle:managed": true
     }
   ],
   "settings": {
-    "window.title": "SvelteKitTemplate",
+    "window.title": "Sveltekit",
     "compile-hero.disable-compile-files-on-did-save-code": true,
     "files.exclude": {
       "**/.git": true,
