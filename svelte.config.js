@@ -26,7 +26,7 @@ const config = {
             strict: true,
         }),
 		paths: {
-			base: '/sveltekit-sample',
+			relative: true
 		},
 		prerender: {
 			// Not needed because the models overview page has links to all the models – and sveltekit will automatically pre-render all reachable links!
