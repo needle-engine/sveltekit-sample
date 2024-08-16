@@ -11,7 +11,7 @@
 <menu>
     Select a example scene →
     {#each data.entries as entry}
-        <a href="{base}/scenes/{entry.url}">{entry.name}</a>
+        <a href="{base}/scenes/{entry.url}/">{entry.name}</a>
     {/each} <span class="hint">note that each scene is a separate route</span>
 </menu>
 

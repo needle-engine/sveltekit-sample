@@ -6,9 +6,9 @@
 <div class="app">
     <div class="header">
         <a href="{base}/">Home</a>
-        <a href="{base}/markdown">Markdown Page</a>
-        <a href="{base}/regular">Regular Page</a>
-        <a href="{base}/scenes">Scenes</a>
+        <a href="{base}/markdown/">Markdown Page</a>
+        <a href="{base}/regular/">Regular Page</a>
+        <a href="{base}/scenes/">Scenes</a>
     </div>
     <main>
         <slot />
