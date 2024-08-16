@@ -26,6 +26,7 @@ const config = {
             strict: true,
         }),
 		paths: {
+			base: "",
 			relative: true
 		},
 		prerender: {
