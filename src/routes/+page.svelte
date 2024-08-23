@@ -39,7 +39,7 @@
         max-width: 500px;
         margin: 2em;
     }
-    @media (max-width: 700px) {
+    @media (max-width: 1100px) {
         .cols {
             flex-flow: column;
         }
