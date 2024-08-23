@@ -9,6 +9,8 @@
         <a href="{base}/markdown">Markdown Page</a>
         <a href="{base}/regular">Regular Page</a>
         <a href="{base}/scenes">Scenes</a>
+        <a href="https://needle.tools">Needle</a>
+        <a href="https://github.com/needle-engine/sveltekit-sample">Github</a>
     </div>
     <main>
         <slot />
