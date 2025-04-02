@@ -14,6 +14,6 @@
 
 
 ## Needle Cloud
-To automatically deploy to Needle Cloud go to [Settings/Pages](settings/secrets/actions) and add a `NEEDLE_CLOUD_TOKEN` repository secret. A deployment can also be triggered manually on the [Deployment Action page](./actions/workflows/deploy.yml)
+To automatically deploy to Needle Cloud go to [Settings/Secrets/Actions](settings/secrets/actions) and add a `NEEDLE_CLOUD_TOKEN` repository secret. A deployment can also be triggered manually on the [Deployment Action page](./actions/workflows/deploy.yml)
 
 [![Build and Deploy to Needle Cloud](https://github.com/needle-engine/sveltekit-sample/actions/workflows/deploy.yml/badge.svg)](https://github.com/needle-engine/sveltekit-sample/actions/workflows/deploy.yml)
