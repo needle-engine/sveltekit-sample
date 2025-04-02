@@ -13,7 +13,7 @@
   For example: if you deploy to `https://test.github.io/my-repository` it should contain `/my-repository`
 
 
-## Github Pages Instructions
-To use github pages go to [Settings/Pages](settings/pages) and set the **Build and Deployment** source to *Github Actions*. Now you can push new versions to this repository to trigger an automatic build and deployment action to be hosted on github pages. A deployment can also be triggered manually on the [Deployment Action page](./actions/workflows/deploy.yml)
+## Needle Cloud
+To automatically deploy to Needle Cloud go to [Settings/Pages](settings/secrets/actions) and add a `NEEDLE_CLOUD_TOKEN` repository secret. A deployment can also be triggered manually on the [Deployment Action page](./actions/workflows/deploy.yml)
 
-[![Build and Deploy to Pages](https://github.com/needle-engine/sveltekit-sample/actions/workflows/deploy.yml/badge.svg)](https://github.com/needle-engine/sveltekit-sample/actions/workflows/deploy.yml)
+[![Build and Deploy to Needle Cloud](https://github.com/needle-engine/sveltekit-sample/actions/workflows/deploy.yml/badge.svg)](https://github.com/needle-engine/sveltekit-sample/actions/workflows/deploy.yml)
