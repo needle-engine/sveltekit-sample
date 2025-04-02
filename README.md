@@ -1,6 +1,6 @@
 *This is a SvelteKit project adding the needle-engine web component* 
 
-→ [**Live demo**](https://sveltekit-template-z23hmxbwnjve-latest.needle.run/) automatically build and deployed via github actions
+→ [**Live demo**](https://sveltekit-sample-z23hmxbmewty-latest.needle.run/) automatically build and deployed via github actions
 
 ## Needle Engine Configuration
 
