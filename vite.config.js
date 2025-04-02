@@ -5,9 +5,16 @@ import { sveltekit } from '@sveltejs/kit/vite';
 // https://github.com/sapphi-red/vite-plugin-static-copy#usage
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 
+// Load environment variables
+import dotenv from "dotenv";
+
+
 const files = new Array();
 
 export default defineConfig(async ({ command }) => {
+
+    dotenv.config();
+
     const { needlePlugins, useGzip, loadConfig } = await import("@needle-tools/engine/plugins/vite/index.js");
     const needleConfig = await loadConfig();
     return {
