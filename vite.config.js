@@ -15,7 +15,7 @@ export default defineConfig(async ({ command }) => {
 
     dotenv.config();
 
-    const { needlePlugins, useGzip, loadConfig } = await import("@needle-tools/engine/plugins/vite/index.js");
+    const { needlePlugins, useGzip, loadConfig } = await import("@needle-tools/engine/vite");
     const needleConfig = await loadConfig();
     return {
         plugins: [            
