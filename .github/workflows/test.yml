@@ -3,8 +3,11 @@ name: Test Deployment
 on:
   push:
     branches: ["test"]
-
   workflow_dispatch:
+    inputs:
+        webhookUrl:
+          description: 'Webhook URL for notifications'
+          required: false
 
 # Allow one concurrent deployment
 concurrency:
@@ -38,7 +41,7 @@ jobs:
             dir: ./build
             next: true
             name: sveltekit-template-test
-            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+            webhookUrl: ${{ inputs.webhookUrl || secrets.DISCORD_WEBHOOK }}
         
       - name: Display deployment URL
         run: |
