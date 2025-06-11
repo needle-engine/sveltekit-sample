@@ -1,4 +1,4 @@
-name: Build and Deploy to Needle Cloud
+name: Test Deployment
 
 on:
   push:
@@ -41,8 +41,10 @@ jobs:
         
       - name: Display deployment URL
         run: |
-          echo "::notice title=Deployment URL::Deployed to ${{ steps.deploy.outputs.url }}" \
-          npx --yes needle-publish-helper@next send-webhook-message ${{ secrets.DISCORD_WEBHOOK }} "Deployed to ${{ steps.deploy.outputs.url }}"
+          echo "::notice title=Deployment URL::Deployed to ${{ steps.deploy.outputs.url }}"
+        
+      - name: Publish webhook
+        run: npx --yes needle-publish-helper@next send-webhook-message ${{ secrets.DISCORD_WEBHOOK }} "Deployed to ${{ steps.deploy.outputs.url }}"
           
 
 
