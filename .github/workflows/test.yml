@@ -38,13 +38,11 @@ jobs:
             dir: ./build
             next: true
             name: sveltekit-template-test
+            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
         
       - name: Display deployment URL
         run: |
           echo "::notice title=Deployment URL::Deployed to ${{ steps.deploy.outputs.url }}"
-        
-      - name: Publish webhook
-        run: npx --yes needle-publish-helper@next send-webhook-message ${{ secrets.DISCORD_WEBHOOK }} "Deployed to ${{ steps.deploy.outputs.url }}"
           
 
 
