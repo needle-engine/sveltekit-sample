@@ -2,7 +2,7 @@ name: Build and Deploy to Needle Cloud
 
 on:
   push:
-    branches: ["main"]
+    branches: ["test"]
 
   workflow_dispatch:
 
@@ -29,16 +29,22 @@ jobs:
         run: npm run build
         env:
           NEEDLE_CLOUD_TOKEN: ${{ secrets.NEEDLE_CLOUD_TOKEN }}
-      # Deploy to Needle Cloud
+
       - name: Deploy to Needle Cloud
         uses: needle-tools/deploy-to-needle-cloud-action@v1
         id: deploy
         with:
             token: ${{ secrets.NEEDLE_CLOUD_TOKEN }}
             dir: ./build
-            # name: sveltekit-template (you can optionally define a name for your deployment)
-      # Display the deployment URL
+            next: true
+            name: sveltekit-template-test
+        
       - name: Display deployment URL
         run: |
-          echo "::notice title=Deployment URL::Deployed to ${{ steps.deploy.outputs.url }}"
+          echo "::notice title=Deployment URL::Deployed to ${{ steps.deploy.outputs.url }}" \
+          npx --yes needle-publish-helper@next send-webhook-message ${{ secrets.DISCORD_WEBHOOK }} "Deployed to ${{ steps.deploy.outputs.url }}"
+          
+
+
+    
 
