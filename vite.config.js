@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import viteCompression from 'vite-plugin-compression';
 import { sveltekit } from '@sveltejs/kit/vite';
+import viteBasicSslPlugin from '@vitejs/plugin-basic-ssl';
 
 // https://github.com/sapphi-red/vite-plugin-static-copy#usage
 import { viteStaticCopy } from 'vite-plugin-static-copy'
@@ -18,7 +19,8 @@ export default defineConfig(async ({ command }) => {
     const { needlePlugins, useGzip, loadConfig } = await import("@needle-tools/engine/vite");
     const needleConfig = await loadConfig();
     return {
-        plugins: [            
+        plugins: [
+            viteBasicSslPlugin(),
             useGzip(needleConfig) ? viteCompression({ deleteOriginFile: true }) : null,
             needlePlugins(command, needleConfig),
             viteStaticCopy({
