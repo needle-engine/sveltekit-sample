@@ -41,7 +41,7 @@ jobs:
             dir: ./build
             name: sveltekit-template-test
             webhookUrl: ${{ inputs.webhookUrl || secrets.DISCORD_WEBHOOK }}
-            overrideVersion: "next"
+            overrideVersion: "rc"
         
       - name: Display deployment URL
         run: |
