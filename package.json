@@ -3,10 +3,12 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
+    "dev": "vite --host",
     "start": "npm run dev",
-    "dev": "vite dev --host",
-    "build": "vite build",
-    "preview": "vite preview",
+    "build": "vite build -- --production",
+    "build:production": "npm run build",
+    "build:dev": "vite build",
+    "deploy": "npm run build && npx --yes needle-cloud deploy build --token",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
   },
