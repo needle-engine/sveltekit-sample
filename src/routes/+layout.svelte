@@ -1,6 +1,9 @@
 <script lang="ts">
     import "../global.css";
     import { base } from "$app/paths";
+    import type { Snippet } from "svelte";
+
+    let { children }: { children: Snippet } = $props();
 </script>
 
 <div class="app">
@@ -13,7 +16,7 @@
         <a href="https://github.com/needle-engine/sveltekit-sample">Github</a>
     </div>
     <main>
-        <slot />
+        {@render children()}
     </main>
 </div>
 
