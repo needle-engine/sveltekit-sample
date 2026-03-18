@@ -22,7 +22,7 @@ const config = {
             pages: 'build',
             assets: 'build',
             fallback: null,
-            precompress: false,
+            precompress: true,
             strict: true,
         }),
 		paths: {

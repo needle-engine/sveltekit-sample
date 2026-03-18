@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import viteCompression from 'vite-plugin-compression2';
+import { compression } from 'vite-plugin-compression2';
 import { sveltekit } from '@sveltejs/kit/vite';
 import viteBasicSslPlugin from '@vitejs/plugin-basic-ssl';
 
@@ -16,7 +16,6 @@ export default defineConfig(async ({ command }) => {
     return {
         plugins: [
             viteBasicSslPlugin(),
-            useGzip(needleConfig) ? viteCompression({ deleteOriginalAssets: true, algorithms: ["gzip"], exclude: "**/.vite/manifest.json" }) : null,
             needlePlugins(command, needleConfig),
             sveltekit(),
         ],
