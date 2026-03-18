@@ -1,36 +1,23 @@
 import { defineConfig } from 'vite';
-import viteCompression from 'vite-plugin-compression';
+import viteCompression from 'vite-plugin-compression2';
 import { sveltekit } from '@sveltejs/kit/vite';
 import viteBasicSslPlugin from '@vitejs/plugin-basic-ssl';
-
-// https://github.com/sapphi-red/vite-plugin-static-copy#usage
-import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 // Load environment variables
 import dotenv from "dotenv";
 
-
-const files = new Array();
 
 export default defineConfig(async ({ command }) => {
 
     dotenv.config();
 
     const { needlePlugins, useGzip, loadConfig } = await import("@needle-tools/engine/vite");
-    const needleConfig = await loadConfig();
+    const needleConfig = await loadConfig() ?? undefined;
     return {
         plugins: [
             viteBasicSslPlugin(),
-            useGzip(needleConfig) ? viteCompression({ deleteOriginFile: true }) : null,
+            useGzip(needleConfig) ? viteCompression({ deleteOriginalAssets: true, algorithms: ["gzip"], exclude: "**/.vite/manifest.json" }) : null,
             needlePlugins(command, needleConfig),
-            viteStaticCopy({
-                targets: files.map((file) => {
-                    return {
-                        src: file.path,
-                        dest: "downloads",
-                    }
-                }),
-            }),
             sveltekit(),
         ],
         server: {
