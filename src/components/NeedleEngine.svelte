@@ -12,7 +12,7 @@
     });
 </script>
 
-<needle-engine loading-style="light" {src} {...restProps} />
+<needle-engine loading-style="light" {src} {...restProps}></needle-engine>
 
 <style>
     needle-engine {
