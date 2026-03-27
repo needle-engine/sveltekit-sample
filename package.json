@@ -13,11 +13,11 @@
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "dependencies": {
-    "@needle-tools/engine": "^4.16.0",
-    "three": "npm:@needle-tools/three@^0.169.19"
+    "@needle-tools/engine": "4.16.5",
+    "three": "npm:@needle-tools/three@0.169.19"
   },
   "devDependencies": {
-    "@needle-tools/helper": "^1.11.5",
+    "@needle-tools/helper": "2.0.0-next.faf57e6",
     "@sveltejs/adapter-auto": "^3.0.0",
     "@sveltejs/adapter-static": "^3.0.0",
     "@sveltejs/kit": "^2.0.0",
@@ -30,7 +30,6 @@
     "svelte": "^5.0.0",
     "svelte-check": "^4.0.0",
     "typescript": "^5.0.4",
-    "vite": "^6.0.0",
-    "vite-plugin-compression2": "^2.5.2"
+    "vite": "^6.0.0"
   }
 }
