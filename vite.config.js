@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite';
-import { compression } from 'vite-plugin-compression2';
 import { sveltekit } from '@sveltejs/kit/vite';
 import viteBasicSslPlugin from '@vitejs/plugin-basic-ssl';
 
