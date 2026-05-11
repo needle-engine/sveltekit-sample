@@ -42,6 +42,7 @@ jobs:
         run: npm run build
         env:
           NEEDLE_CLOUD_TOKEN: ${{ env.CLOUD_TOKEN }}
+          NEEDLE_CLOUD_CLI_VERSION_OVERRIDE: ${{ inputs.overrideVersion || 'rc' }}
 
       - name: Deploy to Needle Cloud
         uses: needle-tools/deploy-to-needle-cloud-action@v1
