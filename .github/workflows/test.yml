@@ -8,6 +8,10 @@ on:
         webhookUrl:
           description: 'Webhook URL for notifications'
           required: false
+        overrideVersion:
+          description: 'needle-cloud CLI version/tag to use (e.g. cli/rc, cli/dev, cli/next)'
+          required: false
+          default: 'rc'
 
 # Allow one concurrent deployment
 concurrency:
@@ -41,7 +45,7 @@ jobs:
             dir: ./build
             name: sveltekit-template-test
             webhookUrl: ${{ inputs.webhookUrl || secrets.DISCORD_WEBHOOK }}
-            overrideVersion: "rc"
+            overrideVersion: ${{ inputs.overrideVersion || 'rc' }}
         
       - name: Display deployment URL
         run: |
