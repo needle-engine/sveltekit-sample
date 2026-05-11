@@ -9,9 +9,13 @@ on:
           description: 'Webhook URL for notifications'
           required: false
         overrideVersion:
-          description: 'needle-cloud CLI version/tag to use (e.g. cli/rc, cli/dev, cli/next)'
+          description: 'needle-cloud CLI version/tag to use (e.g. rc, dev, next)'
           required: false
           default: 'rc'
+        api:
+          description: 'API environment: production or staging'
+          required: false
+          default: 'production'
 
 # Allow one concurrent deployment
 concurrency:
@@ -22,6 +26,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    env:
+      CLOUD_TOKEN: ${{ inputs.api == 'staging' && secrets.NEEDLE_CLOUD_TOKEN_STAGING || secrets.NEEDLE_CLOUD_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,13 +41,13 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          NEEDLE_CLOUD_TOKEN: ${{ secrets.NEEDLE_CLOUD_TOKEN }}
+          NEEDLE_CLOUD_TOKEN: ${{ env.CLOUD_TOKEN }}
 
       - name: Deploy to Needle Cloud
         uses: needle-tools/deploy-to-needle-cloud-action@v1
         id: deploy
         with:
-            token: ${{ secrets.NEEDLE_CLOUD_TOKEN }}
+            token: ${{ env.CLOUD_TOKEN }}
             dir: ./build
             name: sveltekit-template-test
             webhookUrl: ${{ inputs.webhookUrl || secrets.DISCORD_WEBHOOK }}
