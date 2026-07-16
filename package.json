@@ -8,13 +8,13 @@
     "build": "vite build -- --production",
     "build:production": "npm run build",
     "build:dev": "vite build",
-    "deploy": "npm run build && npx --yes needle-cloud deploy build --token",
+    "deploy": "npm run build && npx --yes needle-cloud@latest deploy build --token",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "dependencies": {
-    "@needle-tools/engine": "^5.1.0-alpha.5",
-    "three": "npm:@needle-tools/three@0.169.19"
+    "@needle-tools/engine": "5.1.6",
+    "three": "npm:@needle-tools/three@^0.169.19"
   },
   "devDependencies": {
     "@needle-tools/helper": "2.0.0-next.faf57e6",

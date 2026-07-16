@@ -13,3 +13,5 @@ build.log
 /build
 .DS_Store
 */skills/needle-engine/SKILL.md
+.agents/skills/needle-engine
+.github/skills/needle-engine

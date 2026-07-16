@@ -1,18 +1,25 @@
 <script lang="ts">
+    // Needle Engine 5 supports top-level imports, so the engine no longer needs
+    // to be dynamically imported inside onMount.
+    import "@needle-tools/engine";
+    import type { NeedleEngineAttributes } from "@needle-tools/engine";
     import { onMount } from "svelte";
 
     let src = $state("");
-    let { ...restProps } = $props();
+    // $props() has no generic form — annotate the destructuring target instead.
+    // Partial<> because consumers only pass the attributes they need.
+    let { ...restProps }: Partial<NeedleEngineAttributes> = $props();
 
     onMount(async () => {
-        await import("@needle-tools/engine");
+        // gen.js is generated codegen that touches `document`, so it stays
+        // browser-only (the app is prerendered).
         await import("../generated/gen.js");
         // in case no src is defined we use the global variable that is set inside of the codegen file gen.js
         src = globalThis["needle:codegen_files"] as any;
     });
 </script>
 
-<needle-engine loading-style="light" {src} {...restProps}></needle-engine>
+<needle-engine {src} {...restProps}></needle-engine>
 
 <style>
     needle-engine {
