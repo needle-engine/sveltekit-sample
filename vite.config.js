@@ -25,13 +25,6 @@ export default defineConfig(async ({ command }) => {
                 strict: false,
             },
         },
-        // The Needle production plugin emits `@needle-tools/engine/needle-app` as an entry chunk.
-        // In SvelteKit's SSR build pass that package would otherwise be externalized, and rollup
-        // forbids a module being both an entry point and external. Bundling it in SSR avoids the
-        // "Entry module ... cannot be external" error (safe since engine 5 is SSR-friendly).
-        ssr: {
-            noExternal: ['@needle-tools/engine'],
-        },
         build: {
             emptyOutDir: true,
             keepNames: true,
