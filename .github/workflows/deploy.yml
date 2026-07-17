@@ -42,3 +42,18 @@ jobs:
         run: |
           echo "::notice title=Deployment URL::Deployed to ${{ steps.deploy.outputs.url }}"
 
+      # Notify Discord if any previous step (build/deploy) failed
+      - name: Notify Discord on failure
+        if: failure()
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK" ]; then
+            echo "DISCORD_WEBHOOK secret not set — skipping notification"
+            exit 0
+          fi
+          curl -sS -H "Content-Type: application/json" \
+            -d "{\"content\":\"❌ **${{ github.repository }}** build/deploy failed on \`${{ github.ref_name }}\` ($(echo ${{ github.sha }} | cut -c1-7))\n$RUN_URL\"}" \
+            "$DISCORD_WEBHOOK" || echo "Failed to send Discord notification"
+
